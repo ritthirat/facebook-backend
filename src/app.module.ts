@@ -7,7 +7,7 @@ import { AppService } from './app.service';
 @Module({
   imports: [
     ConfigModule.forRoot(), // อ่านไฟล์ .env
-    MongooseModule.forRoot(`mongodb://${process.env.MONGO_INITDB_ROOT_USERNAME}:${process.env.MONGO_INITDB_ROOT_PASSWORD}@localhost:27017/facebook_project?authSource=admin`),
+    MongooseModule.forRoot(`mongodb://${process.env.MONGO_INITDB_ROOT_USERNAME}:${process.env.MONGO_INITDB_ROOT_PASSWORD}@localhost:27100/facebook_project?authSource=admin`),
   ],
   controllers: [AppController],
   providers: [AppService],
