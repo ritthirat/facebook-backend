@@ -9,4 +9,12 @@ export class AppController {
   getHello(@Param('id') id: string): string {
     return `Hello World! - ${id}`;
   }
+
+  @Get('/api/user/info')
+  getthing(): object {
+    return {
+      username: 'test',
+      email: '1@1.com',
+    };
+  }
 }
