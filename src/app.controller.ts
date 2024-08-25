@@ -29,12 +29,12 @@ export class AppController {
   postthing(@Param('id') id: string): object {
     const data = [
       {
-        username: 'test',
+        username: 'adminbig',
         email: 'asdasd',
         id: '1',
       },
       {
-        username: 'test',
+        username: 'adminbig2',
         email: 'asdasd',
         id: '2',
       }
