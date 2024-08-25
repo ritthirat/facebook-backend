@@ -18,15 +18,7 @@ export class AppController {
     };
   }
   @Get('/api/user/info/:id')
-  getthing2(@Param('id') id: string): object {
-    return {
-      username: 'test',
-      email: 'asdasd',
-      id: id,
-    };
-  }
-  @Post('/api/user/info/:id')
-  postthing(@Param('id') id: string): object {
+  getuser(@Param('id') id: string): object {
     const data = [
       {
         username: 'adminbig',
