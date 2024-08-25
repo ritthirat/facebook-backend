@@ -1,13 +1,27 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
-import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConfigModule } from '@nestjs/config';
+
 
 @Module({
   imports: [
-    ConfigModule.forRoot(), // อ่านไฟล์ .env
-    MongooseModule.forRoot(`mongodb://${process.env.MONGO_INITDB_ROOT_USERNAME}:${process.env.MONGO_INITDB_ROOT_PASSWORD}@localhost:27100/facebook_project?authSource=admin`),
+    ConfigModule.forRoot(),
+    TypeOrmModule.forRoot({
+      url: process.env.DATABASE_URL,
+      type: 'postgres',
+      entities: [__dirname + '/**/*.entity{.ts,.js}'],
+      synchronize: true,
+      extra: {
+        connectionLimit: 1,
+        ssl: {
+          rejectUnauthorized: false,
+        },
+      },
+      // database: process.env.DATABASE_NAME,
+      logging: false,
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],
